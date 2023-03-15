@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style> 
+        .navbar{
+            display: flex;
+            justify-content: space-between;
+            background-image: linear-gradient(to left,blue, red);
+            margin:0px;
+        }
+        ul{
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+        }
+        ul li{
+            margin-left: 50px;
+        }
+        .calculator{
+            max-width: 500px;
+            margin:auto;
+            margin-top: 200px;
+        }
+        .buttons{
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+        }
+        .btn{
+            text-align: center;
+            padding: 3px;
+            border: solid 1px black;
+            cursor: pointer;
+        }
+        .screen{
+            padding: 10px;
+            border: solid 1px;
+            text-align: end;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <header class="navbar">
+        <h1 id = "calc"><div>Calcultor</div></h1>
+        <ul>
+            <li class = "nav-link">Home</li>
+            <li class = "nav-link">About</li>
+            <li  class = "nav-link">Contact</li>
+        </ul>
+    </header>
+    <section class = "calculator">
+            <div class="screen" id ="screen">
+                        0
+            </div>
+            <div class="buttons">
+                <div class="btn" onclick="append(9)">9</div>
+                <div class="btn"onclick="append(8)">8</div>
+                <div class="btn" onclick="append(7)">7</div>
+                <div class="btn" onclick="append(6)">6</div>
+                <div class="btn"onclick="append(5)">5</div>
+                <div class="btn" onclick="append(4)">4</div>
+                <div class="btn" onclick="append(3)">3</div>
+                <div class="btn" onclick="append(2)">2</div>
+                <div class="btn" onclick="append(1)">1</div>
+                <div class="btn" onclick="append(0)">0</div>
+                <div class="btn" onclick="append('+')">+</div>
+                <div class="btn" onclick="append('-')">-</div>
+                <div class="btn" onclick="append('*')">*</div>
+                <div class="btn" onclick="append('/')">/</div>
+                <div class="btn" onclick="calc()">=</div>
+                <div class="btn" onclick="clearScreen()">Clear</div>
+            </div>
+    </section>
+</body>
+<script>
+    let equalClick = false
+    function append(value) {
+        let screen = document.getElementById("screen")
+        if(value == 0) return
+        if(screen.innerText == "0" ) {  // 07 -> 7
+            screen.innerText = value 
+        }else if( equalClick ==true){ // equal clicked first then append current value only
+            screen.innerText = value
+            equalClick = false
+        }
+        else{ //  7 + 5
+            screen.innerText = screen.innerText + value
+        }
+    }
+    function clearScreen(){
+        let screen = document.getElementById("screen")
+        screen.innerText = "0"
+    }
+    function calc(){
+        equalClick = true
+        let screen = document.getElementById("screen")
+        let ans = eval(screen.innerText)
+        screen.innerText = ans
+    }
+</script>
+</html>
