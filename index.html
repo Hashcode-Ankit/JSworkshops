@@ -44,7 +44,7 @@
 </head>
 <body>
     <header class="navbar">
-        <h1 id = "calc"><div>Calcultor</div></h1>
+        <h1 id = "calc"><div>Calculator</div></h1>
         <ul>
             <li class = "nav-link">Home</li>
             <li class = "nav-link">About</li>
@@ -55,17 +55,7 @@
             <div class="screen" id ="screen">
                         0
             </div>
-            <div class="buttons">
-                <div class="btn" onclick="append(9)">9</div>
-                <div class="btn"onclick="append(8)">8</div>
-                <div class="btn" onclick="append(7)">7</div>
-                <div class="btn" onclick="append(6)">6</div>
-                <div class="btn"onclick="append(5)">5</div>
-                <div class="btn" onclick="append(4)">4</div>
-                <div class="btn" onclick="append(3)">3</div>
-                <div class="btn" onclick="append(2)">2</div>
-                <div class="btn" onclick="append(1)">1</div>
-                <div class="btn" onclick="append(0)">0</div>
+            <div class="buttons" id="buttons">
                 <div class="btn" onclick="append('+')">+</div>
                 <div class="btn" onclick="append('-')">-</div>
                 <div class="btn" onclick="append('*')">*</div>
@@ -77,6 +67,13 @@
 </body>
 <script>
     let equalClick = false
+    let buttons = document.getElementById("buttons")
+    let buttonsUpperText =""
+    for(let i=9;i>=0;i--){
+        buttonsUpperText +=  `<div class="btn" onclick="append(${i})">${i}</div>`
+    }
+    
+    buttons.innerHTML = buttonsUpperText+ buttons.innerHTML 
     function append(value) {
         let screen = document.getElementById("screen")
         if(value == 0) return
