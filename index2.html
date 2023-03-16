@@ -102,9 +102,9 @@
     }
     function showAllTasks(){
         let tasksContainer = document.getElementById("tasks")
-           for(let i  in taskArray){
+           for(let i in taskArray){
                 tasksContainer.innerHTML += `<div class="taskCard">
-                        <h2>${taskArray[i].title}</h2>
+                        <h2>${taskArray[k].title}</h2>
                         <h3>${taskArray[i].taskTime}</h3>
                         <button>${taskArray[i].status}</button>
                     </div>`

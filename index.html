@@ -70,9 +70,9 @@
     let buttons = document.getElementById("buttons")
     let buttonsUpperText =""
     for(let i=9;i>=0;i--){
-        buttonsUpperText +=  `<div class="btn" onclick="append(${i})">${i}</div>`
+        buttonsUpperText = buttonsUpperText +  `<div class="btn" onclick="append(${i})">${i}</div>`
     }
-    
+
     buttons.innerHTML = buttonsUpperText+ buttons.innerHTML 
     function append(value) {
         let screen = document.getElementById("screen")
